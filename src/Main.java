@@ -1,90 +1,88 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
 
-        Scanner ningresado = new Scanner(System.in);
-        Mascota objMascotan1 = new Mascota();
-        objMascotan1.crearMascota("Wanda", "Xoloitzcuintli", 5, 5.5,  true);
-        Mascota objMascotan2 = new Mascota();
-        objMascotan2.crearMascota("Ronnie", "Xoloitzcuintli", 3, 3.5, true);
+
+        Scanner teclado = new Scanner((System.in));
+
+        List<Mascota> lstList = new ArrayList<>();
+        System.out.println("EL TAMANNIO DE LA LISTA ES:" + lstList.size());
+
+        System.out.println(lstList.toString());
 
 
-        while (true){
-            System.out.println("Menu / Modificar");
-            System.out.println("1. Edad ");
-            System.out.println("2. Peso");
-            System.out.println("3. Estado de salud");
-            System.out.println("4. Informacion");
-            System.out.println("Ingresa el numero segun la accion deseada");
-            int opcion = ningresado.nextInt();
 
-            switch (opcion){
+
+
+    //menu interaccion
+
+        int op;
+        do {
+
+            System.out.println("1. CREAR OBJETO");
+            System.out.println("2. MOSTRAR LA LISTA");
+            System.out.println("3. BUSCAR MASCOTA");
+            System.out.println("SELECCIONA UN OPCION");
+            op = teclado.nextInt();
+            switch (op){
 
                 case 1:
-                    System.out.println("----CAMBIO DE EDAD");
-                    System.out.println("elige el perro");
-                    int opcionedadperro = ningresado.nextInt();
-                    switch (opcionedadperro){
-                        case 1:
-                            System.out.println("edad actual: " + objMascotan1.getEdad());
-                            System.out.println("ingresa cuantos años deseas sumarle al perro");
-                            int nuevaEdadPerro = ningresado.nextInt();
-                            objMascotan1.setEdad(objMascotan1.getEdad() + nuevaEdadPerro);
-                            System.out.println("---Actualizado---");
-                            System.out.println("edad actual: " + objMascotan1.getEdad());
-                            System.out.println("ingresa cualquier numero para volver al menu");
-                            ningresado.nextInt();
-                            break;
-                        case 2:
-                            System.out.println("ingresa la nueva edad del perro");
-                            int nuevaEdadPerro2 = ningresado.nextInt();
-                            objMascotan2.setEdad(objMascotan2.getEdad() - nuevaEdadPerro2);
-                            System.out.println("---Actualizado---");
-                            System.out.println("ingresa cualquier numero para volver al menu");
-                            int saltar = ningresado.nextInt();
-                            break;
+                    System.out.println("1. CREAR OBJETO");
 
-                    }
+                    System.out.println("INGRESE EL NOMBRE DE LA MASCOTA");
+                    String nombre = teclado.next();
+
+                    System.out.println("INGRESE LA ESPECIE DE LA MASCOTA");
+                    String especie = teclado.next();
+
+                    System.out.println("INGRESE LA EDAD DE LA MASCOTA");
+                    int edad = teclado.nextInt();
+
+                    System.out.println("INGRESE EL PESO DE LA MASCOTA");
+                    double peso = teclado.nextDouble();
+
+                    System.out.println("INGRESE TRUE SI LA MASCOTA ESTA SALUDABLE O FALSE SI NO ");
+                    boolean saludable = teclado.nextBoolean();
+
+                    Mascota p1 = new Mascota(nombre, especie, edad, peso, saludable);
+                    lstList.add(p1);
+
+                    break;
 
                 case 2:
-                    System.out.println("----CAMBIO DE PESO   ");
-                    System.out.println("elige el perro");
-                    int opcionpesoperro = ningresado.nextInt();
-                    switch (opcionpesoperro){
-                        case 1:
-                            System.out.println("ingresa el nuevo peso del perro");
-                            int nuevoPesoPerro = ningresado.nextInt();
-                            objMascotan1.setEdad(objMascotan1.getEdad() - nuevoPesoPerro);
-                            System.out.println("---Actualizado---");
-                            System.out.println("ingresa cualquier numero para volver al menu");
-                            ningresado.nextInt();
-                            break;
-                        case 2:
-                            System.out.println("ingresa nuevo peso del perro");
-                            int nuevaEdadPerro2 = ningresado.nextInt();
-                            objMascotan2.setEdad(objMascotan2.getEdad() - nuevaEdadPerro2);
-                            System.out.println("---Actualizado---");
-                            System.out.println("ingresa cualquier numero para volver al menu");
-                            ningresado.nextInt();
-                            break;
+                    for (Mascota p : lstList){
 
+                        System.out.println(p);
 
+                    }
+                    break;
 
+                case 3:
+                    String mascota1;
+                    System.out.println("INGRESE EL NOMBRE DE LA MASCOTA");
+                    mascota1 = teclado.next();
 
+                    if (lstList.isEmpty()) {
 
-
-
-
-
-
-
-
-
+                        System.out.println("SU MASCOTA NO EXISTE");
 
                     }
 
+                    Mascota m1 = null;
+
+                    for (Mascota p: lstList){
+                        if (p.getNombre().equalsIgnoreCase(mascota1)){
+                            m1 = p;
+                            System.out.println(m1.toString());
+
+                        }
+
+
+                    }
 
 
             }
@@ -93,18 +91,8 @@ public class Main {
 
 
 
-        }
 
-
-
-
-
-
-
-
-
-
-
+        } while (op !=3);
 
 
 

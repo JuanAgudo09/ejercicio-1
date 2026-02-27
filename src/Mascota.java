@@ -50,16 +50,67 @@ public class Mascota {
 
     private boolean saludable;
 
-    public void crearMascota(String _nombre, String _especie, int _edad, double _peso, boolean _saludable){
-
-        nombre = _nombre;
-        especie = _especie;
-        edad = _edad;
-        peso = _peso;
-        saludable = _saludable;
-
+    @Override
+    public String toString() {
+        return "Mascota{" +
+                "nombre='" + nombre + '\'' +
+                ", especie='" + especie + '\'' +
+                ", edad=" + edad +
+                ", peso=" + peso +
+                ", saludable=" + saludable +
+                '}';
     }
 
-    //ni preguntando fui capaz de usar metodos propios bien
+    public Mascota(String nombre, String especie, int edad, double peso, boolean saludable) {
+        this.nombre = nombre;
+        this.especie = especie;
+        this.edad = edad;
+        this.peso = peso;
+        this.saludable = saludable;
+    }
+
+
+    public int cumplirAnios() {
+        edad++;
+        return edad;
+    }
+
+
+    public double engordar() {
+        peso += 1;
+        return peso;
+    }
+
+
+    public double adelgazar() {
+        if (peso > 1) {
+            peso -= 1;
+        }
+        return peso;
+    }
+
+
+    public boolean enfermar() {
+        saludable = false;
+        return saludable;
+    }
+
+
+    public boolean recuperarSalud() {
+        saludable = true;
+        return saludable;
+    }
+
+
+    public String mostrarFicha() {
+        return "Mascota{" +
+                "nombre='" + nombre + '\'' +
+                ", especie='" + especie + '\'' +
+                ", edad=" + edad +
+                ", peso=" + peso +
+                ", saludable=" + saludable +
+                '}';
+    }
+
 
 }
